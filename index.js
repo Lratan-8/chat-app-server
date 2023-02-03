@@ -1,8 +1,9 @@
-//this is our node server which will handle socket io connections
 
-const io = require('socket.io')(8000, {
+require('dotenv').config()
+//this is our node server which will handle socket io connections
+const io = require('socket.io')(process.env.HOST, {
     cors: {
-        origin: ['http://127.0.0.1:5500'],
+        origin: ['https://letuschatapplication.netlify.app/'],
         credentials: true
     }
 });
