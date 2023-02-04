@@ -9,6 +9,7 @@ const io = require('socket.io')(process.env.HOST, {
 });
 
 console.log("app is running");
+console.log(`services started on host ${process.env.HOST}`);
 
 const users = {};
 
