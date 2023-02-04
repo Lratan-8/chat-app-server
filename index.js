@@ -3,10 +3,12 @@ require('dotenv').config()
 //this is our node server which will handle socket io connections
 const io = require('socket.io')(process.env.HOST, {
     cors: {
-        origin: ['https://letuschatapplication.netlify.app/'],
+        origin: ['https://letuschatapplication.netlify.app/', 'http://127.0.0.1:5500'],
         credentials: true
     }
 });
+
+console.log("app is running");
 
 const users = {};
 
@@ -16,6 +18,8 @@ const users = {};
 //Now this 'io' will listen to the server will listen to the incoming events.
 
 io.on('connection', socket => {
+
+    console.log("Socket io is running");
 
     socket.on('new-user-joined', name => { //whenver we get a 'new-user-joined' event, then we hav to run this given arrow function
         users[socket.id] = name;
